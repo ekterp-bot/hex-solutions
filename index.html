@@ -126,7 +126,7 @@
         </div>
 
         <div class="project-grid">
-          <article class="project-card">
+          <article class="project-card project-card-interactive" data-project="truartist" tabindex="0" role="button" aria-label="Open True Artist App project preview">
             <div class="project-shot artist-shot real-app-shot">
               <div class="app-showcase">
                 <div class="phone-frame screenshot-frame screenshot-frame-secondary">
@@ -144,7 +144,7 @@
             </div>
           </article>
 
-          <article class="project-card featured">
+          <article class="project-card featured project-card-interactive" data-project="rate-search" tabindex="0" role="button" aria-label="Open Rate Search Tool project preview">
             <div class="project-shot rate-shot">
               <div class="browser-frame rate-screenshot-frame">
                 <img
@@ -160,7 +160,7 @@
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card project-card-interactive" data-project="colibri" tabindex="0" role="button" aria-label="Open Colibri Meat Market project preview">
             <div class="project-shot market-shot">
               <div class="site-frame colibri-frame">
                 <div class="colibri-header">
@@ -191,7 +191,7 @@
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card project-card-interactive" data-project="zayy" tabindex="0" role="button" aria-label="Open Zayy the Barber project preview">
             <div class="project-shot barber-shot">
               <div class="barber-frame">
                 <div class="barber-top">
@@ -362,6 +362,27 @@
         </div>
       </section>
     </main>
+
+    <div class="project-modal" id="project-modal" aria-hidden="true">
+      <div class="project-modal-backdrop" data-close-modal></div>
+      <section class="project-modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" type="button" data-close-modal aria-label="Close project preview">x</button>
+        <div class="modal-copy">
+          <p class="tag" id="modal-tag">Project</p>
+          <h2 id="modal-title">Project preview</h2>
+          <p id="modal-description"></p>
+        </div>
+        <div class="modal-stage">
+          <button class="modal-nav modal-prev" type="button" aria-label="Previous preview">&lt;</button>
+          <div class="modal-slide" id="modal-slide"></div>
+          <button class="modal-nav modal-next" type="button" aria-label="Next preview">&gt;</button>
+        </div>
+        <div class="modal-footer">
+          <p id="modal-count"></p>
+          <div class="modal-dots" id="modal-dots" aria-label="Preview slides"></div>
+        </div>
+      </section>
+    </div>
 
     <script src="./script.js"></script>
   </body>
