@@ -473,7 +473,9 @@ h3 {
 }
 
 .artist-shot {
-  background: linear-gradient(135deg, rgba(255, 110, 88, 0.2), rgba(49, 216, 197, 0.06));
+  background:
+    radial-gradient(circle at 50% 12%, rgba(39, 255, 28, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(255, 110, 88, 0.12), rgba(49, 216, 197, 0.06));
 }
 
 .rate-shot {
@@ -499,6 +501,44 @@ h3 {
   width: 10.8rem;
   min-height: 15rem;
   padding: 0.85rem;
+}
+
+.real-app-shot {
+  min-height: 21rem;
+  overflow: hidden;
+}
+
+.screenshot-frame {
+  position: relative;
+  width: min(82%, 12.4rem);
+  height: 18.6rem;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(39, 255, 28, 0.32);
+  border-radius: 20px;
+  background: #050505;
+  box-shadow:
+    0 1.4rem 3rem rgba(0, 0, 0, 0.34),
+    0 0 2.2rem rgba(39, 255, 28, 0.13);
+}
+
+.screenshot-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.screenshot-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
 }
 
 .album-art {
