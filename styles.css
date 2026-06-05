@@ -483,7 +483,10 @@ h3 {
 }
 
 .market-shot {
-  background: linear-gradient(135deg, rgba(242, 184, 75, 0.22), rgba(255, 110, 88, 0.09));
+  background:
+    radial-gradient(circle at 18% 18%, rgba(219, 39, 102, 0.17), transparent 24%),
+    radial-gradient(circle at 78% 72%, rgba(27, 172, 153, 0.18), transparent 28%),
+    linear-gradient(135deg, rgba(242, 184, 75, 0.22), rgba(255, 110, 88, 0.09));
 }
 
 .barber-shot {
@@ -623,25 +626,137 @@ h3 {
   padding: 1.1rem;
 }
 
-.site-frame strong {
-  display: block;
-  margin-bottom: 1rem;
-  color: var(--amber);
-  font-size: 1.4rem;
+.colibri-frame {
+  padding: 0;
+  overflow: hidden;
+  background: #fff9ef;
 }
 
-.product-row {
+.colibri-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.85rem;
+  color: #063d24;
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.colibri-header strong,
+.colibri-header small {
+  display: block;
+  line-height: 1;
+}
+
+.colibri-header strong {
+  color: #063d24;
+  font-size: 1.15rem;
+}
+
+.colibri-header small {
+  margin-top: 0.2rem;
+  color: #cf2c69;
+  font-weight: 900;
+}
+
+.bird-mark {
+  position: relative;
+  width: 2.4rem;
+  aspect-ratio: 1.18;
+}
+
+.bird-mark::before,
+.bird-mark::after {
+  content: "";
+  position: absolute;
+  inset: 18% 15%;
+  border-radius: 70% 30% 60% 40%;
+  background: linear-gradient(135deg, #19a68e, #f2b84b 48%, #cf2c69);
+  transform: rotate(-24deg);
+}
+
+.bird-mark::after {
+  inset: 34% 1% 42% 58%;
+  border-radius: 999px;
+  background: #063d24;
+  transform: rotate(-8deg);
+}
+
+.colibri-store {
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  grid-template-rows: 3.8rem 2.2rem;
+  gap: 0.45rem;
+  min-height: 7rem;
+  padding: 0.75rem;
+  background:
+    linear-gradient(180deg, rgba(124, 75, 34, 0.18), rgba(255, 255, 255, 0.6)),
+    #eec99d;
+}
+
+.meat-case,
+.hot-food,
+.produce-crates {
+  border-radius: 7px;
+  border: 1px solid rgba(6, 61, 36, 0.18);
+}
+
+.meat-case {
+  grid-row: span 2;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0 38%, transparent 38%),
+    repeating-linear-gradient(90deg, #b8453c 0 1rem, #e48672 1rem 1.8rem);
+}
+
+.hot-food {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent),
+    repeating-linear-gradient(90deg, #c66b2d 0 1rem, #efd06d 1rem 1.8rem);
+}
+
+.produce-crates {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.65rem;
-  margin-top: 1.2rem;
+  gap: 0.35rem;
+  padding: 0.35rem;
+  background: rgba(129, 75, 31, 0.42);
 }
 
-.product-row i {
-  display: block;
-  aspect-ratio: 1;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.12);
+.produce-crates i {
+  border-radius: 5px;
+  background: #74b843;
+}
+
+.produce-crates i:nth-child(2) {
+  background: #e2552d;
+}
+
+.produce-crates i:nth-child(3) {
+  background: #263629;
+}
+
+.colibri-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.45rem;
+  padding: 0.65rem;
+}
+
+.colibri-cards span {
+  min-height: 2.5rem;
+  padding: 0.45rem;
+  border-radius: 7px;
+  color: #063d24;
+  background: #fff1d5;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+.colibri-cards span:nth-child(2) {
+  background: #e7f4df;
+}
+
+.colibri-cards span:nth-child(3) {
+  background: #ffe4ec;
 }
 
 .barber-frame {
