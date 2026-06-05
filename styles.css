@@ -600,6 +600,22 @@ h3 {
   padding: 1rem;
 }
 
+.rate-screenshot-frame {
+  min-height: 14rem;
+  padding: 0;
+  overflow: hidden;
+  border-color: rgba(49, 216, 197, 0.34);
+  background: #f7fafc;
+}
+
+.rate-screenshot-frame img {
+  display: block;
+  width: 100%;
+  height: 14rem;
+  object-fit: cover;
+  object-position: top center;
+}
+
 .filter-row {
   display: grid;
   grid-template-columns: 1fr 0.7fr 0.42fr;
