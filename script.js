@@ -68,7 +68,7 @@ const projectData = {
     slides: [
       {
         type: "image",
-        src: "./assets/zayy-barber-mockup.png",
+        src: "./assets/zayy-barber-mockup.jpg",
         className: "modal-browser",
         alt: "Zayy the Barber booking website mockup with appointment flow, services, gallery, location, and reviews",
         label: "Real generated booking site mockup",
