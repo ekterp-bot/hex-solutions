@@ -504,8 +504,15 @@ h3 {
 }
 
 .real-app-shot {
+  position: relative;
   min-height: 21rem;
   overflow: hidden;
+}
+
+.app-showcase {
+  position: relative;
+  width: min(92%, 18rem);
+  height: 19rem;
 }
 
 .screenshot-frame {
@@ -539,6 +546,28 @@ h3 {
   object-fit: cover;
   object-position: top center;
   display: block;
+}
+
+.screenshot-frame-primary,
+.screenshot-frame-secondary {
+  position: absolute;
+}
+
+.screenshot-frame-primary {
+  right: 0.25rem;
+  bottom: 0;
+  z-index: 2;
+}
+
+.screenshot-frame-secondary {
+  left: 0;
+  top: 0.65rem;
+  z-index: 1;
+  width: min(72%, 10.8rem);
+  height: 17.2rem;
+  opacity: 0.82;
+  transform: rotate(-4deg);
+  filter: saturate(0.9);
 }
 
 .album-art {
