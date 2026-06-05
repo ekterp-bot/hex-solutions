@@ -84,19 +84,11 @@ const projectData = {
       "A booking-first local business mockup with services, gallery, reviews, location, and a bold appointment flow built around trust and conversion.",
     slides: [
       {
-        type: "html",
-        label: "Expanded booking site mockup",
-        html: `
-          <div class="modal-mockup">
-            <div class="barber-frame">
-              <div class="barber-top"><strong>Zayy</strong><span>Book</span></div>
-              <div class="barber-hero"><b>Fresh cuts.</b><b>Clean lines.</b><em>Easy booking.</em></div>
-              <div class="barber-booking">
-                <i></i><i></i><i></i><i></i>
-                <span></span><span></span><span></span>
-              </div>
-            </div>
-          </div>`,
+        type: "image",
+        src: "./assets/zayy-barber-mockup.png",
+        className: "modal-browser",
+        alt: "Zayy the Barber booking website mockup with appointment flow, services, gallery, location, and reviews",
+        label: "Real generated booking site mockup",
       },
     ],
   },

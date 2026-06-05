@@ -637,6 +637,20 @@ h3 {
   object-position: top center;
 }
 
+.image-preview-frame {
+  min-height: 14rem;
+  padding: 0;
+  overflow: hidden;
+}
+
+.image-preview-frame img {
+  display: block;
+  width: 100%;
+  height: 14rem;
+  object-fit: cover;
+  object-position: top center;
+}
+
 .filter-row {
   display: grid;
   grid-template-columns: 1fr 0.7fr 0.42fr;
