@@ -52,28 +52,11 @@ const projectData = {
       "A colorful local market web concept for fresh meat, hot food, groceries, location details, and a storefront that feels more current and trustworthy.",
     slides: [
       {
-        type: "html",
-        label: "Expanded storefront mockup",
-        html: `
-          <div class="modal-mockup">
-            <div class="site-frame colibri-frame">
-              <div class="colibri-header">
-                <div class="bird-mark" aria-hidden="true"></div>
-                <div>
-                  <strong>Colibri Stockton</strong>
-                  <small>Mexican Grocery &amp; Meat</small>
-                </div>
-              </div>
-              <div class="colibri-store">
-                <div class="meat-case"></div>
-                <div class="hot-food"></div>
-                <div class="produce-crates"><i></i><i></i><i></i></div>
-              </div>
-              <div class="colibri-cards">
-                <span>Fresh Meat</span><span>Food in the Back</span><span>Groceries</span>
-              </div>
-            </div>
-          </div>`,
+        type: "image",
+        src: "./assets/colibri-market-mockup.png",
+        className: "modal-browser",
+        alt: "Colibri Stockton Mexican grocery and meat market website mockup with storefront, meat, hot food, groceries, and contact details",
+        label: "Real generated storefront mockup",
       },
     ],
   },
