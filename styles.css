@@ -442,7 +442,7 @@ h3 {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -486,9 +486,16 @@ h3 {
   background: linear-gradient(135deg, rgba(242, 184, 75, 0.22), rgba(255, 110, 88, 0.09));
 }
 
+.barber-shot {
+  background:
+    radial-gradient(circle at 25% 20%, rgba(242, 184, 75, 0.15), transparent 28%),
+    linear-gradient(135deg, rgba(210, 0, 0, 0.28), rgba(242, 184, 75, 0.08));
+}
+
 .phone-frame,
 .browser-frame,
-.site-frame {
+.site-frame,
+.barber-frame {
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
   background: rgba(4, 6, 8, 0.78);
@@ -635,6 +642,94 @@ h3 {
   aspect-ratio: 1;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.12);
+}
+
+.barber-frame {
+  width: 100%;
+  min-height: 14rem;
+  padding: 0.85rem;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.1)),
+    rgba(5, 6, 8, 0.86);
+}
+
+.barber-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.barber-top strong {
+  color: #f0bf32;
+  font-size: 1.25rem;
+}
+
+.barber-top span {
+  min-width: 4rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  color: #fff;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 900;
+  background: #d70b0b;
+}
+
+.barber-hero {
+  display: grid;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.barber-hero b,
+.barber-hero em {
+  display: block;
+  max-width: 9rem;
+  font-size: 1.55rem;
+  line-height: 0.92;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.barber-hero em {
+  color: #df1111;
+}
+
+.barber-booking {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.45rem;
+  padding: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.barber-booking i,
+.barber-booking span {
+  display: block;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.barber-booking i {
+  aspect-ratio: 1;
+}
+
+.barber-booking i:first-child {
+  border: 1px solid #d70b0b;
+  background: rgba(215, 11, 11, 0.38);
+}
+
+.barber-booking span {
+  grid-column: span 4;
+  height: 0.52rem;
+}
+
+.barber-booking span:last-child {
+  height: 1.2rem;
+  background: #d70b0b;
 }
 
 .project-content {
