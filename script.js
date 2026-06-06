@@ -147,6 +147,9 @@ const intakeForm = document.querySelector("#intake-form");
 const formStatus = document.querySelector("#form-status");
 const inviteNote = document.querySelector(".invite-note");
 const handoffButtons = document.querySelectorAll("[data-handoff]");
+const logoAiForm = document.querySelector("#logo-ai-form");
+const logoAiStatus = document.querySelector("#logo-ai-status");
+const logoAiResult = document.querySelector("#logo-ai-result");
 
 const handoffOptions = {
   github: {
@@ -249,6 +252,59 @@ intakeForm?.addEventListener("submit", async (event) => {
         : error.message,
       "error",
     );
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+
+logoAiForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const submitButton = logoAiForm.querySelector('button[type="submit"]');
+  const payload = Object.fromEntries(new FormData(logoAiForm).entries());
+  const requestPayload = {
+    name: payload.brand,
+    email: "hexsolutions.dev@gmail.com",
+    projectType: "Logo concept or brand direction",
+    links: `Style: ${payload.style || "Not specified"}\nMust avoid: ${payload.avoid || "Not specified"}`,
+    summary: `Logo / AI concept request for: ${payload.brand}\n\nBrief:\n${payload.brief}`,
+    timeline: "Logo concept request",
+    budget: "To discuss",
+  };
+
+  submitButton.disabled = true;
+  logoAiResult.hidden = true;
+  logoAiStatus.textContent = "Sending logo request to Hex Solutions...";
+  logoAiStatus.dataset.state = "";
+
+  try {
+    const response = await fetch("/api/intake", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestPayload),
+    });
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(result.message || "The logo request could not send yet.");
+    }
+
+    logoAiForm.reset();
+    logoAiResult.hidden = false;
+    logoAiResult.innerHTML = `
+      <div class="logo-ai-score">Request sent</div>
+      <h4>Hex will review the logo brief.</h4>
+      <p>I will use AI to shape the concept, rate the direction, and reply with the next best prompt or visual direction.</p>
+    `;
+    logoAiStatus.textContent = "Logo request sent. Hex Solutions will follow up by email.";
+    logoAiStatus.dataset.state = "success";
+  } catch (error) {
+    const localPreview = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+    logoAiStatus.textContent = localPreview
+      ? "Local preview cannot send email yet. Once deployed with Resend configured, this request will email Hex Solutions."
+      : error.message;
+    logoAiStatus.dataset.state = "error";
   } finally {
     submitButton.disabled = false;
   }

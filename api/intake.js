@@ -50,7 +50,10 @@ module.exports = async function handler(request, response) {
 
   const to = process.env.INTAKE_TO_EMAIL || "hexsolutions.dev@gmail.com";
   const from = process.env.INTAKE_FROM_EMAIL || "Hex Solutions <onboarding@resend.dev>";
-  const subject = `New Hex Solutions build request: ${projectType}`;
+  const isLogoRequest = projectType.toLowerCase().includes("logo");
+  const subject = isLogoRequest
+    ? `[HEX LOGO REQUEST] ${name} - ${projectType}`
+    : `[HEX BUILD REQUEST] ${name} - ${projectType}`;
   const html = `
     <div style="font-family: Arial, sans-serif; color: #111; line-height: 1.55;">
       <h2>New Hex Solutions build request</h2>

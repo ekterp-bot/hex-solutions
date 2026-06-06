@@ -8,7 +8,7 @@
       name="description"
       content="Custom websites, web apps, automations, and practical technology tools by Hex the Engineer."
     />
-    <link rel="stylesheet" href="./styles.css?v=intake-2" />
+    <link rel="stylesheet" href="./styles.css?v=logo-request-1" />
   </head>
   <body>
     <header class="site-header" data-elevated="false">
@@ -261,6 +261,49 @@
             </div>
           </div>
 
+          <form class="logo-ai-panel" id="logo-ai-form">
+            <div>
+              <h3>AI logo request</h3>
+              <p>Give Hex a simple brief. I will run the AI direction, rate the concept, and send back a tighter prompt or visual direction without burning public site credits.</p>
+            </div>
+
+            <label>
+              Brand or project
+              <input name="brand" type="text" placeholder="Example: Neon taco truck, mobile DJ app, barber booking site" required />
+            </label>
+
+            <label>
+              What should it feel like?
+              <textarea name="brief" rows="4" placeholder="Audience, vibe, colors, symbols, what you hate, where the logo will be used..." required></textarea>
+            </label>
+
+            <div class="form-grid">
+              <label>
+                Style
+                <select name="style">
+                  <option>Clean tech</option>
+                  <option>Streetwear</option>
+                  <option>Luxury badge</option>
+                  <option>Playful mascot</option>
+                  <option>Minimal wordmark</option>
+                  <option>Not sure</option>
+                </select>
+              </label>
+              <label>
+                Must avoid
+                <input name="avoid" type="text" placeholder="Generic icons, too much detail, ugly gradients..." />
+              </label>
+            </div>
+
+            <button class="button primary" type="submit">
+              <span aria-hidden="true">AI</span>
+              Send logo request
+            </button>
+
+            <p class="form-status" id="logo-ai-status" role="status"></p>
+            <div class="logo-ai-result" id="logo-ai-result" hidden></div>
+          </form>
+
           <div class="logo-lab" aria-label="AI logo design concept board">
             <div class="logo-tile hex-tile">
               <img src="./assets/hex-logo-blue.png" alt="" aria-hidden="true" />
@@ -439,6 +482,6 @@
       </section>
     </div>
 
-    <script src="./script.js?v=intake-2"></script>
+    <script src="./script.js?v=logo-request-1"></script>
   </body>
 </html>

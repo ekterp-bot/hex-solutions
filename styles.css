@@ -1020,6 +1020,10 @@ h3 {
   align-items: center;
 }
 
+.logo-design-layout > :first-child {
+  align-self: start;
+}
+
 .logo-design-layout p {
   max-width: 46rem;
   margin-top: 1.2rem;
@@ -1045,6 +1049,92 @@ h3 {
   color: #dfe6e3;
   background: rgba(255, 255, 255, 0.045);
   font-weight: 800;
+}
+
+.logo-ai-panel {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+  border: 1px solid rgba(49, 216, 197, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(49, 216, 197, 0.09), rgba(255, 110, 88, 0.045)),
+    rgba(255, 255, 255, 0.045);
+}
+
+.logo-ai-panel h3 {
+  margin: 0;
+}
+
+.logo-ai-panel p {
+  margin: 0.55rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.logo-ai-panel label {
+  display: grid;
+  gap: 0.45rem;
+  color: #dfe6e3;
+  font-size: 0.86rem;
+  font-weight: 900;
+}
+
+.logo-ai-panel input,
+.logo-ai-panel select,
+.logo-ai-panel textarea {
+  width: 100%;
+  min-height: 2.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 0.75rem 0.85rem;
+  color: var(--text);
+  background: rgba(4, 6, 8, 0.62);
+  font: inherit;
+}
+
+.logo-ai-panel textarea {
+  resize: vertical;
+}
+
+.logo-ai-panel input:focus,
+.logo-ai-panel select:focus,
+.logo-ai-panel textarea:focus {
+  border-color: rgba(49, 216, 197, 0.68);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(49, 216, 197, 0.12);
+}
+
+.logo-ai-result {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(4, 6, 8, 0.58);
+}
+
+.logo-ai-score {
+  color: var(--amber);
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.logo-ai-result h4 {
+  margin: 0;
+}
+
+.logo-ai-result p,
+.logo-ai-result ul {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.logo-ai-result ul {
+  padding-left: 1.1rem;
 }
 
 .logo-lab {
