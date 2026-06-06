@@ -442,6 +442,10 @@ h3 {
   display: none !important;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .page-view:not(.hero) {
   min-height: 100vh;
   padding-top: clamp(7.5rem, 10vw, 9rem);

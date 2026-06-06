@@ -249,7 +249,9 @@ intakeForm?.addEventListener("submit", async (event) => {
     setFormStatus(
       localPreview
         ? "Local preview cannot send yet. Once deployed on Vercel with the email key, this form will submit for real."
-        : error.message,
+        : error.message.includes("configured")
+          ? "Email sending is not connected yet. Add RESEND_API_KEY in Vercel to make this form live."
+          : error.message,
       "error",
     );
   } finally {
@@ -303,7 +305,9 @@ logoAiForm?.addEventListener("submit", async (event) => {
     const localPreview = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
     logoAiStatus.textContent = localPreview
       ? "Local preview cannot send email yet. Once deployed with Resend configured, this request will email Hex Solutions."
-      : error.message;
+      : error.message.includes("configured")
+        ? "Email sending is not connected yet. Add RESEND_API_KEY in Vercel to make logo requests live."
+        : error.message;
     logoAiStatus.dataset.state = "error";
   } finally {
     submitButton.disabled = false;
