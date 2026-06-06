@@ -1322,13 +1322,26 @@ h3 {
   margin-top: 1rem;
 }
 
-.handoff-list span {
+.handoff-list button {
   min-height: 2.55rem;
   padding: 0.7rem 0.8rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   color: #dfe6e3;
   background: rgba(255, 255, 255, 0.045);
+  font: inherit;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+}
+
+.handoff-list button:hover,
+.handoff-list button:focus-visible,
+.handoff-list button[data-active="true"] {
+  border-color: rgba(49, 216, 197, 0.5);
+  color: var(--cyan);
+  background: rgba(49, 216, 197, 0.09);
+  outline: none;
 }
 
 .contact-email-link {

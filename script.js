@@ -145,12 +145,75 @@ document.addEventListener(
 
 const intakeForm = document.querySelector("#intake-form");
 const formStatus = document.querySelector("#form-status");
+const inviteNote = document.querySelector(".invite-note");
+const handoffButtons = document.querySelectorAll("[data-handoff]");
+
+const handoffOptions = {
+  github: {
+    projectType: "Custom web app",
+    linksPrompt: "GitHub repo URL:\nInvite username/email: hexsolutions.dev@gmail.com\nAccess level: collaborator or repo invite",
+    summaryPrompt: "I need help reviewing, fixing, building, or deploying this repo.",
+    note:
+      "Invite hexsolutions.dev@gmail.com to the GitHub repository, then paste the repo link here. Include what branch or issue needs attention if you know it.",
+  },
+  builder: {
+    projectType: "AI prototype rescue",
+    linksPrompt: "Lovable/Bolt/Replit project link:\nInvite email: hexsolutions.dev@gmail.com\nWhat is stuck or unfinished:",
+    summaryPrompt: "I started this in an AI builder and need help turning it into a working app.",
+    note:
+      "Invite hexsolutions.dev@gmail.com to Lovable, Bolt, Replit, or the dev app workspace, then paste the project link here.",
+  },
+  site: {
+    projectType: "Website or storefront",
+    linksPrompt: "Current website, Vercel preview, domain, or staging link:\nWhat should change:",
+    summaryPrompt: "I have an existing site or preview that needs cleanup, redesign, connection, or deployment help.",
+    note:
+      "Paste the live site, Vercel preview, staging URL, or current domain. If access is needed, invite hexsolutions.dev@gmail.com.",
+  },
+  notes: {
+    projectType: "Not sure yet",
+    linksPrompt: "Screenshot links, Google Drive folder, Loom/video, notes, or rough references:",
+    summaryPrompt: "I have screenshots, notes, or a rough idea and need help deciding the cleanest build path.",
+    note:
+      "Paste screenshot links, notes, references, or a shared folder. Hex can help turn the loose idea into a clear plan.",
+  },
+};
 
 const setFormStatus = (message, state = "") => {
   if (!formStatus) return;
   formStatus.textContent = message;
   formStatus.dataset.state = state;
 };
+
+handoffButtons.forEach((button) => {
+  button.addEventListener("click", async () => {
+    const option = handoffOptions[button.dataset.handoff];
+    if (!option || !intakeForm) return;
+
+    const projectTypeField = intakeForm.elements.projectType;
+    const linksField = intakeForm.elements.links;
+    const summaryField = intakeForm.elements.summary;
+
+    if (projectTypeField) projectTypeField.value = option.projectType;
+    if (linksField && !linksField.value.trim()) linksField.value = option.linksPrompt;
+    if (summaryField && !summaryField.value.trim()) summaryField.value = option.summaryPrompt;
+    if (inviteNote) inviteNote.innerHTML = option.note.replace("hexsolutions.dev@gmail.com", "<strong>hexsolutions.dev@gmail.com</strong>");
+
+    handoffButtons.forEach((item) => {
+      item.dataset.active = String(item === button);
+    });
+
+    setFormStatus("Option selected. Paste the project link or access details, then send the build request.", "");
+    linksField?.focus();
+
+    try {
+      await navigator.clipboard.writeText("hexsolutions.dev@gmail.com");
+      setFormStatus("Option selected. Hex Solutions email copied. Paste the invite/project link, then send the request.", "success");
+    } catch (error) {
+      setFormStatus("Option selected. Paste the project link or access details, then send the build request.", "");
+    }
+  });
+});
 
 intakeForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
