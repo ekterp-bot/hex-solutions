@@ -8,11 +8,11 @@
       name="description"
       content="Custom websites, web apps, automations, and practical technology tools by Hex the Engineer."
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=intake-1" />
   </head>
   <body>
     <header class="site-header" data-elevated="false">
-      <a class="brand" href="#top" aria-label="Hex Solutions home">
+      <a class="brand" href="#/home" aria-label="Hex Solutions home">
         <span class="brand-mark" aria-hidden="true">
           <img src="./assets/hex-logo-header.png" alt="" />
         </span>
@@ -23,19 +23,19 @@
       </a>
 
       <nav class="main-nav" aria-label="Primary navigation">
-        <a href="#work">Work</a>
-        <a href="#services">Services</a>
-        <a href="#logos">Logos</a>
-        <a href="#rescue">AI rescue</a>
-        <a href="#process">Process</a>
-        <a href="#contact">Contact</a>
+        <a href="#/solutions" data-route-link="solutions">Solutions</a>
+        <a href="#/services" data-route-link="services">Services</a>
+        <a href="#/logos" data-route-link="logos">Logos</a>
+        <a href="#/rescue" data-route-link="rescue">AI rescue</a>
+        <a href="#/process" data-route-link="process">Process</a>
+        <a href="#/contact" data-route-link="contact">Contact</a>
       </nav>
 
-      <a class="nav-cta" href="#contact">Start a build</a>
+      <a class="nav-cta" href="#/contact" data-route-link="contact">Start a build</a>
     </header>
 
     <main id="top">
-      <section class="hero">
+      <section class="hero page-view" data-page="home">
         <div class="hero-copy">
           <p class="eyebrow">Custom tools. Clean sites. Useful systems.</p>
           <h1>Tech that makes the day easier.</h1>
@@ -45,11 +45,11 @@
           </p>
 
           <div class="hero-actions" aria-label="Primary actions">
-            <a class="button primary" href="#contact">
+            <a class="button primary" href="#/contact" data-route-link="contact">
               <span aria-hidden="true">+</span>
               Build something
             </a>
-            <a class="button secondary" href="#work">View projects</a>
+            <a class="button secondary" href="#/solutions" data-route-link="solutions">View projects</a>
           </div>
 
           <dl class="hero-stats" aria-label="Capabilities">
@@ -105,7 +105,7 @@
         </div>
       </section>
 
-      <section class="section intro">
+      <section class="section intro page-view" data-page="home">
         <div class="section-kicker">What this is</div>
         <div class="split">
           <h2>For businesses, artists, and operators who need the right tool, not another headache.</h2>
@@ -116,10 +116,10 @@
         </div>
       </section>
 
-      <section class="section work-section" id="work">
+      <section class="section work-section page-view" id="solutions" data-page="solutions" hidden>
         <div class="section-heading">
           <div>
-            <div class="section-kicker">Selected work</div>
+            <div class="section-kicker">Selected solutions</div>
             <h2>Projects with a purpose.</h2>
           </div>
           <p>Swap these previews for real screenshots as each build gets ready for public view.</p>
@@ -185,10 +185,23 @@
               <p>A barber booking mockup with gallery, reviews, location, services, and appointment flow.</p>
             </div>
           </article>
+
+          <article class="project-card project-card-interactive" data-project="bar-vault" tabindex="0" role="button" aria-label="Open Bar Vault website idea preview">
+            <div class="project-shot">
+              <div class="browser-frame image-preview-frame">
+                <img src="./assets/bar-vault-full-page.png" alt="Bar Vault lyrics marketplace website concept" />
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="tag">Website idea</p>
+              <h3>Bar Vault</h3>
+              <p>A marketplace concept for music makers to browse, license, and build songs around ready-to-use bars.</p>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="section services-section" id="services">
+      <section class="section services-section page-view" id="services" data-page="services" hidden>
         <div class="section-heading">
           <div>
             <div class="section-kicker">Services</div>
@@ -197,35 +210,40 @@
         </div>
 
         <div class="service-list">
-          <article>
+          <article class="service-card-interactive" data-open-project="websites" tabindex="0" role="button" aria-label="Open website and storefront examples">
             <span class="icon" aria-hidden="true">H</span>
             <h3>Websites and storefronts</h3>
             <p>Modern pages for businesses that need to look real, clear, and ready for customers.</p>
+            <span class="service-card-action">View examples</span>
           </article>
-          <article>
+          <article class="service-card-interactive" data-open-project="custom-apps" tabindex="0" role="button" aria-label="Open custom web app examples">
             <span class="icon" aria-hidden="true">[]</span>
             <h3>Custom web apps</h3>
             <p>Search tools, dashboards, portals, forms, and workflows built around how the job actually happens.</p>
+            <span class="service-card-action">View examples</span>
           </article>
-          <article>
+          <article class="service-card-interactive" data-open-project="automation" tabindex="0" role="button" aria-label="Open automation and integrations preview">
             <span class="icon" aria-hidden="true">*</span>
             <h3>Automation and integrations</h3>
             <p>Small systems that connect data, reduce repeat work, and make daily operations less annoying.</p>
+            <span class="service-card-action">See approach</span>
           </article>
-          <article>
+          <article class="service-card-interactive" data-open-project="polish" tabindex="0" role="button" aria-label="Open interface polish preview">
             <span class="icon" aria-hidden="true">&lt;&gt;</span>
             <h3>Interface polish</h3>
             <p>Visual direction, layout cleanup, and front-end details that make a product feel finished.</p>
+            <span class="service-card-action">See approach</span>
           </article>
-          <article>
+          <article class="service-card-interactive" data-route-target="logos" tabindex="0" role="button" aria-label="Open AI logo concepts page">
             <span class="icon" aria-hidden="true">AI</span>
             <h3>AI logo concepts</h3>
             <p>Fast brand directions, logo ideas, and visual identity drafts shaped into usable assets.</p>
+            <span class="service-card-action">Open logos</span>
           </article>
         </div>
       </section>
 
-      <section class="section logo-design-section" id="logos">
+      <section class="section logo-design-section page-view" id="logos" data-page="logos" hidden>
         <div class="logo-design-layout">
           <div>
             <div class="section-kicker">AI logo design</div>
@@ -261,7 +279,7 @@
         </div>
       </section>
 
-      <section class="section rescue-section" id="rescue">
+      <section class="section rescue-section page-view" id="rescue" data-page="rescue" hidden>
         <div class="rescue-panel">
           <div>
             <div class="section-kicker">AI build rescue</div>
@@ -294,7 +312,7 @@
         </div>
       </section>
 
-      <section class="section process-section" id="process">
+      <section class="section process-section page-view" id="process" data-page="process" hidden>
         <div class="section-kicker">How it works</div>
         <div class="process-track">
           <article>
@@ -315,21 +333,88 @@
         </div>
       </section>
 
-      <section class="contact-section" id="contact">
+      <section class="contact-section page-view" id="contact" data-page="contact" hidden>
         <div>
           <p class="eyebrow">Let's build the useful version.</p>
           <h2>Bring the idea, the mess, the repo, or the AI prototype. Hex will engineer the tool.</h2>
         </div>
-        <div class="contact-panel">
-          <a
-            class="button primary"
-            href="mailto:hexsolutions.dev@gmail.com?subject=Project%20inquiry%20for%20Hex%20Solutions&body=Tell%20me%20what%20you%20want%20to%20build%2C%20fix%2C%20import%2C%20or%20finish%3A%0A%0ALinks%20or%20screenshots%3A%0A%0ATimeline%3A%0A%0ABudget%20range%20if%20you%20have%20one%3A"
-          >
-            <span aria-hidden="true">@</span>
-            hexsolutions.dev@gmail.com
-          </a>
-          <p>Custom websites, web apps, business tools, AI project rescue, and tech consulting.</p>
-        </div>
+        <form class="contact-panel intake-form" id="intake-form">
+          <div class="form-grid">
+            <label>
+              Your name
+              <input name="name" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+          </div>
+
+          <label>
+            Project type
+            <select name="projectType" required>
+              <option value="">Choose one</option>
+              <option>Website or storefront</option>
+              <option>Custom web app</option>
+              <option>AI prototype rescue</option>
+              <option>Automation or integration</option>
+              <option>Logo concept or brand direction</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+
+          <label>
+            Project links
+            <textarea
+              name="links"
+              rows="3"
+              placeholder="Paste GitHub, Lovable, Bolt, Replit, Vercel, current site, or prototype links."
+            ></textarea>
+          </label>
+
+          <div class="invite-note">
+            Invite <strong>hexsolutions.dev@gmail.com</strong> to your repo, Lovable/Bolt/Replit/Vercel project, or dev app, then paste the link above.
+          </div>
+
+          <label>
+            What needs to happen?
+            <textarea
+              name="summary"
+              rows="5"
+              placeholder="Tell me what you want to build, fix, import, polish, or finish."
+              required
+            ></textarea>
+          </label>
+
+          <div class="form-grid">
+            <label>
+              Timeline
+              <input name="timeline" type="text" placeholder="ASAP, this month, flexible..." />
+            </label>
+            <label>
+              Budget range
+              <input name="budget" type="text" placeholder="Optional" />
+            </label>
+          </div>
+
+          <label class="hp-field" aria-hidden="true">
+            Company website
+            <input name="companyWebsite" type="text" tabindex="-1" autocomplete="off" />
+          </label>
+
+          <button class="button primary" type="submit">
+            <span aria-hidden="true">+</span>
+            Start a build
+          </button>
+          <p class="form-status" id="form-status" role="status"></p>
+          <p>Submissions go straight to Hex Solutions. You can still email directly at <a href="mailto:hexsolutions.dev@gmail.com">hexsolutions.dev@gmail.com</a>.</p>
+          <div class="handoff-list" aria-label="Ways to start a project">
+            <span>GitHub repo invite</span>
+            <span>Lovable/dev app access</span>
+            <span>Existing site or Vercel link</span>
+            <span>Screenshots and notes</span>
+          </div>
+        </form>
       </section>
     </main>
 
@@ -354,6 +439,6 @@
       </section>
     </div>
 
-    <script src="./script.js"></script>
+    <script src="./script.js?v=intake-1"></script>
   </body>
 </html>
