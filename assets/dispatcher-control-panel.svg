@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Sanitized dispatcher control panel automation preview</title>
+  <desc id="desc">A clean operations dashboard showing button-driven workflow steps without customer, vendor, purchase order, or pricing data.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#071c1e"/>
+      <stop offset="0.55" stop-color="#111827"/>
+      <stop offset="1" stop-color="#102822"/>
+    </linearGradient>
+    <linearGradient id="button" x1="0" x2="1">
+      <stop offset="0" stop-color="#31d8c5"/>
+      <stop offset="1" stop-color="#1a93ff"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.19 0 0 0 0 0.85 0 0 0 0 0.77 0 0 0 0.45 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="760" rx="34" fill="#071013"/>
+  <rect x="28" y="28" width="1224" height="704" rx="24" fill="url(#page)" stroke="#24504e" stroke-width="2"/>
+  <rect x="64" y="70" width="1152" height="74" rx="18" fill="#0f171b" stroke="#2f5552"/>
+  <circle cx="96" cy="107" r="10" fill="#ff635f"/>
+  <circle cx="126" cy="107" r="10" fill="#f2b84b"/>
+  <circle cx="156" cy="107" r="10" fill="#31d8c5"/>
+  <text x="204" y="102" fill="#ecfffb" font-family="Arial, sans-serif" font-size="25" font-weight="800">Dispatch Control Panel</text>
+  <text x="204" y="127" fill="#8fb7b2" font-family="Arial, sans-serif" font-size="14" font-weight="700">Sanitized workflow demo based on real spreadsheet automation</text>
+  <rect x="974" y="88" width="184" height="38" rx="19" fill="url(#button)" opacity="0.95"/>
+  <text x="1066" y="112" text-anchor="middle" fill="#061013" font-family="Arial, sans-serif" font-size="14" font-weight="900">Refresh Data</text>
+
+  <rect x="80" y="176" width="428" height="486" rx="22" fill="#101a1d" stroke="#31d8c5" stroke-opacity="0.38"/>
+  <text x="114" y="222" fill="#ecfffb" font-family="Arial, sans-serif" font-size="26" font-weight="900">One-Button Workflow</text>
+  <text x="114" y="251" fill="#8fb7b2" font-family="Arial, sans-serif" font-size="15">Run steps in order or trigger the full flow.</text>
+
+  <g font-family="Arial, sans-serif" font-size="17" font-weight="800">
+    <g transform="translate(114 290)" filter="url(#glow)">
+      <rect width="330" height="54" rx="14" fill="#142125" stroke="#31d8c5" stroke-width="1.5"/>
+      <circle cx="30" cy="27" r="15" fill="url(#button)"/>
+      <text x="26" y="33" fill="#061013" font-size="16">1</text>
+      <text x="60" y="33" fill="#ecfffb">Import new orders</text>
+    </g>
+    <g transform="translate(114 358)">
+      <rect width="330" height="54" rx="14" fill="#142125" stroke="#355c59"/>
+      <circle cx="30" cy="27" r="15" fill="#203d3b"/>
+      <text x="26" y="33" fill="#31d8c5" font-size="16">2</text>
+      <text x="60" y="33" fill="#ecfffb">Sync portal report data</text>
+    </g>
+    <g transform="translate(114 426)">
+      <rect width="330" height="54" rx="14" fill="#142125" stroke="#355c59"/>
+      <circle cx="30" cy="27" r="15" fill="#203d3b"/>
+      <text x="26" y="33" fill="#31d8c5" font-size="16">3</text>
+      <text x="60" y="33" fill="#ecfffb">Update statuses</text>
+    </g>
+    <g transform="translate(114 494)">
+      <rect width="330" height="54" rx="14" fill="#142125" stroke="#355c59"/>
+      <circle cx="30" cy="27" r="15" fill="#203d3b"/>
+      <text x="26" y="33" fill="#31d8c5" font-size="16">4</text>
+      <text x="60" y="33" fill="#ecfffb">Refresh stock view</text>
+    </g>
+    <g transform="translate(114 562)">
+      <rect width="330" height="54" rx="14" fill="#142125" stroke="#355c59"/>
+      <circle cx="30" cy="27" r="15" fill="#203d3b"/>
+      <text x="26" y="33" fill="#31d8c5" font-size="16">5</text>
+      <text x="60" y="33" fill="#ecfffb">Generate tender list</text>
+    </g>
+  </g>
+
+  <rect x="550" y="176" width="634" height="222" rx="22" fill="#101a1d" stroke="#334d4a"/>
+  <text x="586" y="223" fill="#ecfffb" font-family="Arial, sans-serif" font-size="25" font-weight="900">What the automation handles</text>
+  <g font-family="Arial, sans-serif" font-size="15" font-weight="700">
+    <rect x="586" y="258" width="252" height="48" rx="13" fill="#132529" stroke="#274f4b"/>
+    <text x="608" y="288" fill="#c6efea">Finds source files</text>
+    <rect x="862" y="258" width="252" height="48" rx="13" fill="#132529" stroke="#274f4b"/>
+    <text x="884" y="288" fill="#c6efea">Matches order keys safely</text>
+    <rect x="586" y="324" width="252" height="48" rx="13" fill="#132529" stroke="#274f4b"/>
+    <text x="608" y="354" fill="#c6efea">Updates linked fields only</text>
+    <rect x="862" y="324" width="252" height="48" rx="13" fill="#132529" stroke="#274f4b"/>
+    <text x="884" y="354" fill="#c6efea">Stores last-run history</text>
+  </g>
+
+  <rect x="550" y="424" width="634" height="238" rx="22" fill="#101a1d" stroke="#334d4a"/>
+  <text x="586" y="471" fill="#ecfffb" font-family="Arial, sans-serif" font-size="25" font-weight="900">Before vs after</text>
+  <g font-family="Arial, sans-serif">
+    <text x="586" y="518" fill="#f2b84b" font-size="14" font-weight="900">BEFORE</text>
+    <text x="586" y="546" fill="#d8e8e5" font-size="18" font-weight="800">Open files, scan rows, copy fields, rebuild lists.</text>
+    <line x1="586" y1="574" x2="1116" y2="574" stroke="#284a47"/>
+    <text x="586" y="613" fill="#31d8c5" font-size="14" font-weight="900">AFTER</text>
+    <text x="586" y="641" fill="#d8e8e5" font-size="18" font-weight="800">Click once, review exceptions, move on with the day.</text>
+  </g>
+</svg>

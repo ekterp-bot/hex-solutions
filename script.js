@@ -9,7 +9,7 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 
 const pageViews = document.querySelectorAll(".page-view[data-page]");
 const routeLinks = document.querySelectorAll("[data-route-link]");
-const validRoutes = new Set(["home", "solutions", "services", "logos", "rescue", "process", "contact"]);
+const validRoutes = new Set(["home", "solutions", "services", "logos", "websites", "automations", "rescue", "process", "contact"]);
 
 const getRoute = () => {
   const rawRoute = window.location.hash.replace(/^#\/?/, "");
@@ -44,13 +44,17 @@ document.querySelectorAll(".project-grid").forEach((rail) => {
   let isDragging = false;
   let dragStarted = false;
   let startX = 0;
+  let startY = 0;
   let startScrollLeft = 0;
+  let suppressNextClick = false;
 
   rail.addEventListener("pointerdown", (event) => {
     if (event.button !== 0) return;
     isDragging = true;
     dragStarted = false;
+    suppressNextClick = false;
     startX = event.clientX;
+    startY = event.clientY;
     startScrollLeft = rail.scrollLeft;
     rail.dataset.dragging = "false";
     rail.setPointerCapture(event.pointerId);
@@ -59,9 +63,11 @@ document.querySelectorAll(".project-grid").forEach((rail) => {
   rail.addEventListener("pointermove", (event) => {
     if (!isDragging) return;
     const deltaX = event.clientX - startX;
+    const deltaY = event.clientY - startY;
 
-    if (Math.abs(deltaX) > 6) {
+    if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
       dragStarted = true;
+      suppressNextClick = true;
       rail.dataset.dragging = "true";
     }
 
@@ -78,6 +84,7 @@ document.querySelectorAll(".project-grid").forEach((rail) => {
 
     window.setTimeout(() => {
       rail.dataset.dragging = "false";
+      suppressNextClick = false;
     }, 0);
   };
 
@@ -85,6 +92,16 @@ document.querySelectorAll(".project-grid").forEach((rail) => {
   rail.addEventListener("pointercancel", stopDragging);
   rail.addEventListener("pointerleave", stopDragging);
 
+  rail.addEventListener(
+    "click",
+    (event) => {
+      if (!suppressNextClick) return;
+      event.preventDefault();
+      event.stopPropagation();
+      suppressNextClick = false;
+    },
+    true,
+  );
 });
 
 const railWheelState = new WeakMap();
@@ -150,6 +167,10 @@ const handoffButtons = document.querySelectorAll("[data-handoff]");
 const logoAiForm = document.querySelector("#logo-ai-form");
 const logoAiStatus = document.querySelector("#logo-ai-status");
 const logoAiResult = document.querySelector("#logo-ai-result");
+const websiteRequestForm = document.querySelector("#website-request-form");
+const websiteRequestStatus = document.querySelector("#website-request-status");
+const automationRequestForm = document.querySelector("#automation-request-form");
+const automationRequestStatus = document.querySelector("#automation-request-status");
 
 const handoffOptions = {
   github: {
@@ -314,6 +335,104 @@ logoAiForm?.addEventListener("submit", async (event) => {
   }
 });
 
+websiteRequestForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const submitButton = websiteRequestForm.querySelector('button[type="submit"]');
+  const formData = new FormData(websiteRequestForm);
+  const payload = Object.fromEntries(formData.entries());
+  const requestPayload = {
+    name: payload.name,
+    email: payload.email,
+    projectType: "Website or storefront",
+    links: `Business type: ${payload.businessType}\nWebsite type: ${payload.websiteType}\n\nLinks / examples:\n${payload.links || "Not provided"}`,
+    summary: `Website baseline request\n\n${payload.summary}`,
+    timeline: "Website request",
+    budget: "To discuss",
+  };
+
+  submitButton.disabled = true;
+  websiteRequestStatus.textContent = "Sending website request...";
+  websiteRequestStatus.dataset.state = "";
+
+  try {
+    const response = await fetch("/api/intake", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestPayload),
+    });
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(result.message || "The website request could not send yet.");
+    }
+
+    websiteRequestForm.reset();
+    websiteRequestStatus.textContent = "Website request sent. Hex Solutions will review it and follow up.";
+    websiteRequestStatus.dataset.state = "success";
+  } catch (error) {
+    const localPreview = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+    websiteRequestStatus.textContent = localPreview
+      ? "Local preview cannot send email yet. Once deployed with Resend configured, this website request will email Hex Solutions."
+      : error.message.includes("configured")
+        ? "Email sending is not connected yet. Add RESEND_API_KEY in Vercel to make website requests live."
+        : error.message;
+    websiteRequestStatus.dataset.state = "error";
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+
+automationRequestForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const submitButton = automationRequestForm.querySelector('button[type="submit"]');
+  const formData = new FormData(automationRequestForm);
+  const payload = Object.fromEntries(formData.entries());
+  const requestPayload = {
+    name: payload.name,
+    email: payload.email,
+    projectType: "Automation or integration",
+    links: `Workflow type: ${payload.workflowType}\nCurrent tools: ${payload.tools}\n\nFiles / links:\n${payload.links || "Not provided"}`,
+    summary: `Automation workflow request\n\n${payload.summary}`,
+    timeline: "Automation request",
+    budget: "To discuss",
+  };
+
+  submitButton.disabled = true;
+  automationRequestStatus.textContent = "Sending automation request...";
+  automationRequestStatus.dataset.state = "";
+
+  try {
+    const response = await fetch("/api/intake", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestPayload),
+    });
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(result.message || "The automation request could not send yet.");
+    }
+
+    automationRequestForm.reset();
+    automationRequestStatus.textContent = "Automation request sent. Hex Solutions will review the workflow and follow up.";
+    automationRequestStatus.dataset.state = "success";
+  } catch (error) {
+    const localPreview = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
+    automationRequestStatus.textContent = localPreview
+      ? "Local preview cannot send email yet. Once deployed with Resend configured, this automation request will email Hex Solutions."
+      : error.message.includes("configured")
+        ? "Email sending is not connected yet. Add RESEND_API_KEY in Vercel to make automation requests live."
+        : error.message;
+    automationRequestStatus.dataset.state = "error";
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+
 const projectData = {
   websites: {
     tag: "Service examples",
@@ -367,20 +486,17 @@ const projectData = {
     ],
   },
   automation: {
-    tag: "Build approach",
+    tag: "Automation example",
     title: "Automation and integrations",
     description:
-      "This lane is for the repeat work: spreadsheets, emails, forms, databases, reports, handoffs, and the little tasks that quietly eat the day.",
+      "A sanitized dispatcher control panel based on a real spreadsheet workflow: one place to import new work, sync reports, update statuses, refresh stock views, and generate handoff lists.",
     slides: [
       {
-        type: "html",
-        label: "Example targets",
-        html: `
-          <div class="modal-note">
-            <span>Coming into the portfolio soon</span>
-            <h3>Turn repeat work into a button, dashboard, or clean workflow.</h3>
-            <p>Good fits: quote lookups, intake forms, report builders, spreadsheet cleanup, status trackers, and alerts.</p>
-          </div>`,
+        type: "image",
+        src: "./assets/dispatcher-control-panel.svg",
+        className: "modal-browser modal-automation",
+        alt: "Sanitized dispatcher control panel showing button-driven automation steps",
+        label: "Dispatcher control panel workflow",
       },
     ],
   },
@@ -495,6 +611,8 @@ const modalCount = document.querySelector("#modal-count");
 const modalDots = document.querySelector("#modal-dots");
 const prevButton = document.querySelector(".modal-prev");
 const nextButton = document.querySelector(".modal-next");
+const lightbox = document.querySelector("#image-lightbox");
+const lightboxImage = document.querySelector("#lightbox-image");
 let activeProject = null;
 let activeSlide = 0;
 
@@ -502,12 +620,13 @@ const renderModal = () => {
   const project = projectData[activeProject];
   const slide = project.slides[activeSlide];
 
+  modal.dataset.project = activeProject;
   modalTitle.textContent = project.title;
   modalTag.textContent = project.tag;
   modalDescription.textContent = project.description;
   modalSlide.innerHTML =
     slide.type === "image"
-      ? `<img class="modal-image ${slide.className || ""}" src="${slide.src}" alt="${slide.alt}">`
+      ? `<button class="modal-image-button" type="button" data-fullscreen-image="${slide.src}" data-fullscreen-alt="${slide.alt}" aria-label="Open full screen preview"><img class="modal-image ${slide.className || ""}" src="${slide.src}" alt="${slide.alt}"></button>`
       : slide.html;
 
   modalCount.textContent = `${slide.label} (${activeSlide + 1} of ${project.slides.length})`;
@@ -550,17 +669,109 @@ const moveSlide = (direction) => {
   renderModal();
 };
 
-document.querySelectorAll("[data-project]").forEach((card) => {
-  card.addEventListener("click", (event) => {
-    if (event.currentTarget.closest(".project-grid")?.dataset.dragging === "true") return;
-    openModal(card.dataset.project);
-  });
-  card.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openModal(card.dataset.project);
-    }
-  });
+const openLightbox = (src, alt) => {
+  if (!src) return;
+  lightboxImage.src = src;
+  lightboxImage.alt = alt || "Full screen project preview";
+  lightbox.classList.add("is-open");
+  lightbox.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+};
+
+const closeLightbox = () => {
+  lightbox.classList.remove("is-open");
+  lightbox.setAttribute("aria-hidden", "true");
+  lightboxImage.removeAttribute("src");
+  if (!modal.classList.contains("is-open")) {
+    document.body.style.overflow = "";
+  }
+};
+
+let cardPointer = null;
+
+document.addEventListener(
+  "pointerdown",
+  (event) => {
+    if (event.target.closest(".project-modal, .image-lightbox")) return;
+
+    const card = event.target.closest("[data-project]");
+    if (!card || !projectData[card.dataset.project]) return;
+
+    cardPointer = {
+      project: card.dataset.project,
+      target: card,
+      x: event.clientX,
+      y: event.clientY,
+    };
+  },
+  true,
+);
+
+document.addEventListener(
+  "pointerup",
+  (event) => {
+    if (!cardPointer) return;
+
+    const movedX = Math.abs(event.clientX - cardPointer.x);
+    const movedY = Math.abs(event.clientY - cardPointer.y);
+    const isClick = movedX < 10 && movedY < 10;
+    const project = cardPointer.project;
+
+    cardPointer = null;
+
+    if (!isClick) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    openModal(project);
+  },
+  true,
+);
+
+document.addEventListener(
+  "pointercancel",
+  () => {
+    cardPointer = null;
+  },
+  true,
+);
+
+document.addEventListener("click", (event) => {
+  const fullScreenButton = event.target.closest("[data-fullscreen-image]");
+  if (fullScreenButton) {
+    event.preventDefault();
+    event.stopPropagation();
+    openLightbox(fullScreenButton.dataset.fullscreenImage, fullScreenButton.dataset.fullscreenAlt);
+    return;
+  }
+
+  if (event.target.closest("[data-close-lightbox]") || event.target === lightbox) {
+    event.preventDefault();
+    event.stopPropagation();
+    closeLightbox();
+    return;
+  }
+
+  if (event.target.closest("[data-close-modal]")) {
+    event.preventDefault();
+    event.stopPropagation();
+    closeModal();
+    return;
+  }
+
+  const card = event.target.closest("[data-project]");
+  if (!card || !projectData[card.dataset.project]) return;
+  if (event.target.closest(".project-modal, .image-lightbox")) return;
+  event.preventDefault();
+  openModal(card.dataset.project);
+});
+
+document.addEventListener("keydown", (event) => {
+  const card = event.target.closest("[data-project]");
+  if (!card || !projectData[card.dataset.project]) return;
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  openModal(card.dataset.project);
 });
 
 document.querySelectorAll("[data-open-project], [data-route-target]").forEach((card) => {
@@ -582,14 +793,33 @@ document.querySelectorAll("[data-open-project], [data-route-target]").forEach((c
   });
 });
 
-document.querySelectorAll("[data-close-modal]").forEach((element) => {
-  element.addEventListener("click", closeModal);
-});
+document.addEventListener(
+  "pointerup",
+  (event) => {
+    if (event.target.closest("[data-close-lightbox]") || event.target === lightbox) {
+      event.preventDefault();
+      event.stopPropagation();
+      closeLightbox();
+      return;
+    }
+
+    if (!event.target.closest("[data-close-modal]")) return;
+    event.preventDefault();
+    event.stopPropagation();
+    closeModal();
+  },
+  true,
+);
 
 prevButton.addEventListener("click", () => moveSlide(-1));
 nextButton.addEventListener("click", () => moveSlide(1));
 
 document.addEventListener("keydown", (event) => {
+  if (lightbox.classList.contains("is-open")) {
+    if (event.key === "Escape") closeLightbox();
+    return;
+  }
+
   if (!modal.classList.contains("is-open")) return;
   if (event.key === "Escape") closeModal();
   if (event.key === "ArrowLeft") moveSlide(-1);

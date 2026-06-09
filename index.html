@@ -8,7 +8,7 @@
       name="description"
       content="Custom websites, web apps, automations, and practical technology tools by Hex the Engineer."
     />
-    <link rel="stylesheet" href="./styles.css?v=logo-request-2" />
+    <link rel="stylesheet" href="./styles.css?v=fullscreen-2" />
   </head>
   <body>
     <header class="site-header" data-elevated="false">
@@ -26,6 +26,8 @@
         <a href="#/solutions" data-route-link="solutions">Solutions</a>
         <a href="#/services" data-route-link="services">Services</a>
         <a href="#/logos" data-route-link="logos">Logos</a>
+        <a href="#/websites" data-route-link="websites">Websites</a>
+        <a href="#/automations" data-route-link="automations">Automations</a>
         <a href="#/rescue" data-route-link="rescue">AI rescue</a>
         <a href="#/process" data-route-link="process">Process</a>
         <a href="#/contact" data-route-link="contact">Contact</a>
@@ -113,6 +115,43 @@
             This is a practical technology studio: part portfolio, part consulting desk, part build shop. Bring the
             workflow, idea, broken process, or stale website. Hex Solutions turns it into something people can use.
           </p>
+        </div>
+      </section>
+
+      <section class="section hex-does-section page-view" data-page="home">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">What Hex can do for you</div>
+            <h2>Pick the lane. Hex builds the useful version.</h2>
+          </div>
+          <p>Most projects start as one of these: a business needs to look legit, a workflow needs to stop wasting time, or an AI prototype needs someone who can finish the hard parts.</p>
+        </div>
+
+        <div class="hex-lane-grid" aria-label="Hex Solutions core build lanes">
+          <a class="hex-lane" href="#/websites" data-route-link="websites">
+            <span>01</span>
+            <h3>Websites that sell the business</h3>
+            <p>Local pages, storefronts, booking flows, artist sites, portfolios, and clean redesigns that make people trust you faster.</p>
+            <strong>See website examples</strong>
+          </a>
+          <a class="hex-lane" href="#/solutions" data-route-link="solutions">
+            <span>02</span>
+            <h3>Custom tools that fit the work</h3>
+            <p>Dashboards, search tools, portals, calculators, forms, and internal apps built around the real way the job gets done.</p>
+            <strong>View solutions</strong>
+          </a>
+          <a class="hex-lane" href="#/automations" data-route-link="automations">
+            <span>03</span>
+            <h3>Automations that save hours</h3>
+            <p>Spreadsheet workflows, report cleanup, data syncing, status updates, and repeat tasks turned into button-driven systems.</p>
+            <strong>Open automations</strong>
+          </a>
+          <a class="hex-lane" href="#/rescue" data-route-link="rescue">
+            <span>04</span>
+            <h3>AI builds rescued and shipped</h3>
+            <p>Lovable, Bolt, Replit, v0, Cursor, or GitHub projects cleaned up, connected, deployed, and made usable.</p>
+            <strong>Bring the stuck app</strong>
+          </a>
         </div>
       </section>
 
@@ -222,11 +261,11 @@
             <p>Search tools, dashboards, portals, forms, and workflows built around how the job actually happens.</p>
             <span class="service-card-action">View examples</span>
           </article>
-          <article class="service-card-interactive" data-open-project="automation" tabindex="0" role="button" aria-label="Open automation and integrations preview">
+          <article class="service-card-interactive" data-route-target="automations" tabindex="0" role="button" aria-label="Open automation and integrations page">
             <span class="icon" aria-hidden="true">*</span>
             <h3>Automation and integrations</h3>
             <p>Small systems that connect data, reduce repeat work, and make daily operations less annoying.</p>
-            <span class="service-card-action">See approach</span>
+            <span class="service-card-action">Open automations</span>
           </article>
           <article class="service-card-interactive" data-open-project="polish" tabindex="0" role="button" aria-label="Open interface polish preview">
             <span class="icon" aria-hidden="true">&lt;&gt;</span>
@@ -320,6 +359,210 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <section class="section websites-section page-view" id="websites" data-page="websites" hidden>
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">Websites</div>
+            <h2>Tell Hex what kind of site you need.</h2>
+          </div>
+          <p>Local business, artist brand, service page, booking flow, product idea, or storefront. Send the basics and Hex will help turn it into a clean direction.</p>
+        </div>
+
+        <div class="website-examples" aria-label="Website example concepts">
+          <article class="project-card project-card-interactive" data-project="colibri" tabindex="0" role="button" aria-label="Open Colibri website example">
+            <div class="project-shot market-shot">
+              <div class="browser-frame image-preview-frame">
+                <img src="./assets/colibri-market-mockup.png" alt="Colibri Stockton Mexican grocery and meat market website mockup" />
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="tag">Storefront</p>
+              <h3>Colibri Market</h3>
+              <p>Colorful local market presence with food, groceries, location, and a legit first impression.</p>
+            </div>
+          </article>
+
+          <article class="project-card project-card-interactive" data-project="zayy" tabindex="0" role="button" aria-label="Open Zayy barber website example">
+            <div class="project-shot barber-shot">
+              <div class="browser-frame image-preview-frame">
+                <img src="./assets/zayy-barber-mockup.jpg" alt="Zayy the Barber booking website mockup" />
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="tag">Booking site</p>
+              <h3>Zayy the Barber</h3>
+              <p>Service selection, booking energy, gallery, reviews, and contact details in one clear flow.</p>
+            </div>
+          </article>
+
+          <article class="project-card project-card-interactive" data-project="bar-vault" tabindex="0" role="button" aria-label="Open Bar Vault website idea">
+            <div class="project-shot">
+              <div class="browser-frame image-preview-frame">
+                <img src="./assets/bar-vault-full-page.png" alt="Bar Vault lyrics marketplace website concept" />
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="tag">Web app idea</p>
+              <h3>Bar Vault</h3>
+              <p>A music marketplace concept with browse, submit, and AI-builder style sections.</p>
+            </div>
+          </article>
+        </div>
+
+        <form class="website-request-panel intake-form" id="website-request-form">
+          <div>
+            <h3>Website baseline request</h3>
+            <p>Give Hex the business type, site goal, style, and any examples. This sends a website request to the Hex Solutions inbox.</p>
+          </div>
+
+          <div class="form-grid">
+            <label>
+              Your name
+              <input name="name" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+          </div>
+
+          <div class="form-grid">
+            <label>
+              Business type
+              <input name="businessType" type="text" placeholder="Barber, market, artist, studio, trucking..." required />
+            </label>
+            <label>
+              Website type
+              <select name="websiteType" required>
+                <option value="">Choose one</option>
+                <option>Simple business site</option>
+                <option>Booking or appointment site</option>
+                <option>Storefront or menu site</option>
+                <option>Portfolio or artist site</option>
+                <option>Web app idea</option>
+                <option>Redesign an existing site</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Links or examples
+            <textarea name="links" rows="3" placeholder="Current website, Instagram, competitor sites, Vercel/Lovable links, inspiration..."></textarea>
+          </label>
+
+          <label>
+            What should the site do?
+            <textarea name="summary" rows="5" placeholder="What do customers need to see or do? What pages do you need? What vibe should it have?" required></textarea>
+          </label>
+
+          <button class="button primary" type="submit">
+            <span aria-hidden="true">+</span>
+            Send website idea
+          </button>
+          <p class="form-status" id="website-request-status" role="status"></p>
+        </form>
+      </section>
+
+      <section class="section automations-section page-view" id="automations" data-page="automations" hidden>
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker">Automations</div>
+            <h2>Turn repeat work into a button.</h2>
+          </div>
+          <p>Connect data, reduce repeat work, and make daily operations less annoying. The goal is simple: let the computer handle the steps that keep stealing your time.</p>
+        </div>
+
+        <div class="automation-layout">
+          <div class="automation-copy">
+            <p>
+              This example is based on a real dispatch spreadsheet workflow. The public preview is sanitized, but the
+              structure is real: a control panel that imports new orders, syncs report data, updates statuses, refreshes
+              stock views, and generates handoff lists from one place.
+            </p>
+            <div class="automation-proof-grid">
+              <div>
+                <span>01</span>
+                <strong>Import the new work</strong>
+                <p>Pull in fresh order or report data without hunting through tabs by hand.</p>
+              </div>
+              <div>
+                <span>02</span>
+                <strong>Clean and match records</strong>
+                <p>Normalize messy files, match keys, skip conflicts, and keep the workbook trustworthy.</p>
+              </div>
+              <div>
+                <span>03</span>
+                <strong>Update the daily view</strong>
+                <p>Refresh statuses, dates, stock views, and exception lists from one workflow.</p>
+              </div>
+              <div>
+                <span>04</span>
+                <strong>Export the handoff</strong>
+                <p>Generate the list, summary, email draft, or next action your team actually needs.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="automation-preview project-card-interactive" data-open-project="automation" tabindex="0" role="button" aria-label="Expand dispatcher control panel automation preview">
+            <img src="./assets/dispatcher-control-panel.svg" alt="Sanitized dispatcher control panel showing button-driven automation steps" />
+            <span>Click to expand</span>
+          </div>
+        </div>
+
+        <form class="automation-request-panel intake-form" id="automation-request-form">
+          <div>
+            <h3>Automation workflow request</h3>
+            <p>Describe the repetitive task, where the data starts, where it needs to end, and what a successful button would do.</p>
+          </div>
+
+          <div class="form-grid">
+            <label>
+              Your name
+              <input name="name" type="text" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+          </div>
+
+          <div class="form-grid">
+            <label>
+              Workflow type
+              <select name="workflowType" required>
+                <option value="">Choose one</option>
+                <option>Spreadsheet or Excel workflow</option>
+                <option>Report cleanup</option>
+                <option>Data import or sync</option>
+                <option>Status tracker</option>
+                <option>Email, file, or admin task</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+            <label>
+              Current tools
+              <input name="tools" type="text" placeholder="Excel, Google Sheets, Gmail, PDFs, portals, CSVs..." required />
+            </label>
+          </div>
+
+          <label>
+            Files, screenshots, or links
+            <textarea name="links" rows="3" placeholder="Shared folder, screenshots, sample file links, repo, current tool, or notes..."></textarea>
+          </label>
+
+          <label>
+            What do you repeat over and over?
+            <textarea name="summary" rows="5" placeholder="Walk through the task like you are training someone. What do you click, copy, compare, update, or send?" required></textarea>
+          </label>
+
+          <button class="button primary" type="submit">
+            <span aria-hidden="true">+</span>
+            Send automation idea
+          </button>
+          <p class="form-status" id="automation-request-status" role="status"></p>
+        </form>
       </section>
 
       <section class="section rescue-section page-view" id="rescue" data-page="rescue" hidden>
@@ -482,6 +725,11 @@
       </section>
     </div>
 
-    <script src="./script.js?v=logo-request-2"></script>
+    <div class="image-lightbox" id="image-lightbox" aria-hidden="true">
+      <button class="lightbox-close" type="button" data-close-lightbox aria-label="Close full screen preview">x</button>
+      <img id="lightbox-image" alt="" />
+    </div>
+
+    <script src="./script.js?v=fullscreen-2"></script>
   </body>
 </html>
