@@ -651,8 +651,8 @@ const projectData = {
     title: "Travel Reimbursements",
     description:
       "A mobile-friendly reimbursement workflow for creating separate trips, capturing receipt photos, extracting details with AI, reviewing expenses, and exporting approved reports without mixing trip records.",
-    route: "#/solutions",
-    routeLabel: "Open Solutions page",
+    route: "https://travel-expense-reimbursement-mvp.vercel.app",
+    routeLabel: "Try the live app",
     slides: [
       {
         type: "html",
