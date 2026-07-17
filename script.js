@@ -705,6 +705,49 @@ const projectData = {
       },
     ],
   },
+  "reliable-field-service": {
+    tag: "Production SaaS",
+    title: "Reliable Field Service Solutions",
+    description:
+      "A production field-service product with a public marketing experience and a separate authenticated SaaS app for dispatch, bookings, customers, and operational workflows.",
+    route: "https://app.reliablefieldservicesolutions.com/login",
+    routeLabel: "Try the live app",
+    slides: [
+      {
+        type: "html",
+        label: "Sanitized operations preview",
+        html: `
+          <div class="reliable-modal-mockup">
+            <div class="reliable-app-frame">
+              <div class="reliable-app-topbar">
+                <span>Reliable Field Service</span>
+                <span class="reliable-live-status">Production</span>
+              </div>
+              <div class="reliable-app-body">
+                <div class="reliable-app-heading">
+                  <div><span>OPERATIONS</span><strong>Service command center</strong></div>
+                  <b>Today</b>
+                </div>
+                <div class="reliable-kpi-row">
+                  <div><span>Open jobs</span><strong>24</strong></div>
+                  <div><span>On route</span><strong>08</strong></div>
+                  <div><span>Booked</span><strong>16</strong></div>
+                </div>
+                <div class="reliable-job-row"><span class="reliable-job-dot"></span><div><strong>Preventive maintenance</strong><small>Dispatch queue · assigned</small></div><b>View</b></div>
+                <div class="reliable-job-row"><span class="reliable-job-dot warm"></span><div><strong>Reefer service call</strong><small>Customer request · needs action</small></div><b>Open</b></div>
+                <div class="reliable-job-row"><span class="reliable-job-dot"></span><div><strong>New booking request</strong><small>Customer portal · ready to schedule</small></div><b>Review</b></div>
+              </div>
+            </div>
+            <div class="reliable-feature-list">
+              <span>Marketing site</span>
+              <span>Separate SaaS app</span>
+              <span>Dispatch workflows</span>
+              <span>Customer booking flow</span>
+            </div>
+          </div>`,
+      },
+    ],
+  },
 };
 
 const modal = document.querySelector("#project-modal");
@@ -733,6 +776,9 @@ const renderModal = () => {
   modalPageLink.hidden = !project.route;
   modalPageLink.href = project.route || "#/solutions";
   modalPageLink.textContent = project.routeLabel || "Open page";
+  const externalRoute = Boolean(project.route && /^https?:\/\//i.test(project.route));
+  modalPageLink.target = externalRoute ? "_blank" : "_self";
+  modalPageLink.rel = externalRoute ? "noreferrer" : "";
   modalSlide.innerHTML =
     slide.type === "image"
       ? `<button class="modal-image-button" type="button" data-fullscreen-image="${slide.src}" data-fullscreen-alt="${slide.alt}" aria-label="Open full screen preview"><img class="modal-image ${slide.className || ""}" src="${slide.src}" alt="${slide.alt}"></button>`
