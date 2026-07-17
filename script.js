@@ -650,7 +650,7 @@ const projectData = {
     tag: "Mobile web app",
     title: "Travel Reimbursements",
     description:
-      "A mobile-friendly reimbursement workflow for creating separate trips, capturing receipt photos, extracting details with AI, reviewing expenses, and exporting approved reports without mixing trip records.",
+      "A mobile-friendly reimbursement workflow for creating separate trips, capturing receipt photos, extracting details with AI, reviewing expenses, and exporting approved reports without mixing trip records. Screenshots use demo data.",
     route: "https://travel-expense-reimbursement-mvp.vercel.app",
     routeLabel: "Try the live app",
     slides: [
@@ -709,7 +709,7 @@ const projectData = {
     tag: "Production SaaS",
     title: "Reliable Field Service Solutions",
     description:
-      "A production field-service product with a public marketing experience and a separate authenticated SaaS app for dispatch, bookings, customers, and operational workflows.",
+      "A production field-service product with a public marketing experience and a separate authenticated SaaS app for dispatch, bookings, customers, and operational workflows. Screenshots use demo data.",
     route: "https://app.reliablefieldservicesolutions.com/login",
     routeLabel: "Try the live app",
     slides: [
@@ -749,6 +749,68 @@ const projectData = {
     ],
   },
 };
+
+projectData["travel-reimbursements"].slides = [
+  {
+    type: "image",
+    src: "./assets/travel-trips.png",
+    className: "modal-browser app-screenshot",
+    alt: "Travel Reimbursements trip list with demo trip totals and export actions",
+    label: "Trip list and report actions",
+  },
+  {
+    type: "image",
+    src: "./assets/travel-trip-detail.png",
+    className: "modal-browser app-screenshot",
+    alt: "Travel Reimbursements trip detail page with demo expenses and receipt actions",
+    label: "Trip detail and expense review",
+  },
+  {
+    type: "image",
+    src: "./assets/travel-receipt-form.png",
+    className: "modal-browser app-screenshot",
+    alt: "Travel Reimbursements receipt form with demo fields and approval action",
+    label: "Receipt capture and approval form",
+  },
+];
+
+projectData["reliable-field-service"].slides = [
+  {
+    type: "image",
+    src: "./assets/reliable-dashboard.png",
+    className: "modal-browser app-screenshot",
+    alt: "Reliable Field Service dashboard with demo operations metrics and upcoming work",
+    label: "Operations dashboard",
+  },
+  {
+    type: "image",
+    src: "./assets/reliable-dispatch.png",
+    className: "modal-browser app-screenshot",
+    alt: "Reliable Field Service dispatch board with demo technicians and jobs",
+    label: "Dispatch board",
+  },
+  {
+    type: "image",
+    src: "./assets/reliable-customers.png",
+    className: "modal-browser app-screenshot",
+    alt: "Reliable Field Service customers list with demo accounts and locations",
+    label: "Customer accounts",
+  },
+  {
+    type: "image",
+    src: "./assets/reliable-jobs.png",
+    className: "modal-browser app-screenshot",
+    alt: "Reliable Field Service jobs page with demo HVAC and reefer service categories",
+    label: "Job categories",
+  },
+  {
+    type: "image",
+    src: "./assets/reliable-settings.png",
+    className: "modal-browser app-screenshot",
+    alt: "Reliable Field Service workspace settings with demo management controls",
+    label: "Workspace settings",
+  },
+];
 
 const modal = document.querySelector("#project-modal");
 const modalTitle = document.querySelector("#modal-title");

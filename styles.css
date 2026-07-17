@@ -658,6 +658,31 @@ h3 {
     linear-gradient(135deg, rgba(12, 39, 48, 0.9), rgba(242, 184, 75, 0.08));
 }
 
+.project-card[data-project="travel-reimbursements"] .travel-app-frame,
+.project-card[data-project="reliable-field-service"] .reliable-app-frame {
+  display: none;
+}
+
+.reliable-screenshot-frame {
+  width: min(100%, 25rem);
+  padding: 0;
+  overflow: hidden;
+}
+
+.reliable-screenshot-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.58;
+  object-fit: contain;
+  object-position: center;
+  background: #f7fafb;
+}
+
+.app-screenshot {
+  max-height: 72vh;
+  object-fit: contain;
+}
+
 .travel-app-frame {
   width: min(100%, 25rem);
   overflow: hidden;
