@@ -2187,11 +2187,19 @@ h3 {
 }
 
 .project-modal[data-project="travel-reimbursements"] .modal-copy h2 {
-  max-width: none;
-  font-size: clamp(1.35rem, 2.5vw, 2.25rem);
+  max-width: 100%;
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
   overflow-wrap: normal;
-  text-wrap: nowrap;
-  white-space: nowrap;
+  text-wrap: balance;
+  white-space: normal;
+}
+
+.project-modal[data-project="travel-reimbursements"] .modal-copy {
+  align-self: start;
+}
+
+.project-modal[data-project="travel-reimbursements"] .project-modal-panel {
+  grid-template-columns: minmax(20rem, 0.5fr) minmax(0, 0.88fr);
 }
 
 .modal-copy p,
