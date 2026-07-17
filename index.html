@@ -8,7 +8,7 @@
       name="description"
       content="Custom websites, web apps, automations, and practical technology tools by Hex the Engineer."
     />
-    <link rel="stylesheet" href="./styles.css?v=fullscreen-2" />
+    <link rel="stylesheet" href="./styles.css?v=lane-logo-1" />
   </head>
   <body>
     <header class="site-header" data-elevated="false">
@@ -128,30 +128,36 @@
         </div>
 
         <div class="hex-lane-grid" aria-label="Hex Solutions core build lanes">
-          <a class="hex-lane" href="#/websites" data-route-link="websites">
+          <button class="hex-lane" type="button" data-open-project="websites">
             <span>01</span>
             <h3>Websites that sell the business</h3>
             <p>Local pages, storefronts, booking flows, artist sites, portfolios, and clean redesigns that make people trust you faster.</p>
             <strong>See website examples</strong>
-          </a>
-          <a class="hex-lane" href="#/solutions" data-route-link="solutions">
+          </button>
+          <button class="hex-lane" type="button" data-open-project="custom-apps">
             <span>02</span>
             <h3>Custom tools that fit the work</h3>
             <p>Dashboards, search tools, portals, calculators, forms, and internal apps built around the real way the job gets done.</p>
             <strong>View solutions</strong>
-          </a>
-          <a class="hex-lane" href="#/automations" data-route-link="automations">
+          </button>
+          <button class="hex-lane" type="button" data-open-project="automation">
             <span>03</span>
             <h3>Automations that save hours</h3>
             <p>Spreadsheet workflows, report cleanup, data syncing, status updates, and repeat tasks turned into button-driven systems.</p>
             <strong>Open automations</strong>
-          </a>
-          <a class="hex-lane" href="#/rescue" data-route-link="rescue">
+          </button>
+          <button class="hex-lane" type="button" data-open-project="ai-rescue">
             <span>04</span>
             <h3>AI builds rescued and shipped</h3>
             <p>Lovable, Bolt, Replit, v0, Cursor, or GitHub projects cleaned up, connected, deployed, and made usable.</p>
             <strong>Bring the stuck app</strong>
-          </a>
+          </button>
+          <button class="hex-lane" type="button" data-open-project="logo-concepts">
+            <span>05</span>
+            <h3>Logo concepts and brand direction</h3>
+            <p>Quick AI-assisted logo ideas, style direction, prompt cleanup, and simple brand assets for new projects.</p>
+            <strong>Open logo concepts</strong>
+          </button>
         </div>
       </section>
 
@@ -161,7 +167,7 @@
             <div class="section-kicker">Selected solutions</div>
             <h2>Projects with a purpose.</h2>
           </div>
-          <p>Swap these previews for real screenshots as each build gets ready for public view.</p>
+          <p>Real builds, sanitized previews, and useful ideas that show what Hex can make practical.</p>
         </div>
 
         <div class="project-grid">
@@ -235,6 +241,43 @@
               <p class="tag">Website idea</p>
               <h3>Bar Vault</h3>
               <p>A marketplace concept for music makers to browse, license, and build songs around ready-to-use bars.</p>
+            </div>
+          </article>
+
+          <article class="project-card featured project-card-interactive" data-project="travel-reimbursements" tabindex="0" role="button" aria-label="Open Travel Reimbursements project preview">
+            <div class="project-shot travel-shot">
+              <div class="travel-app-frame">
+                <div class="travel-app-topbar">
+                  <span>Travel Reimbursements</span>
+                  <span class="travel-status">AI scan ready</span>
+                </div>
+                <div class="travel-app-body">
+                  <div class="travel-trip-card">
+                    <span>ACTIVE TRIP</span>
+                    <strong>Client visit</strong>
+                    <small>May 12 - May 15 · Business travel</small>
+                  </div>
+                  <div class="travel-action-row">
+                    <span>+ Add receipt</span>
+                    <span>Export report</span>
+                  </div>
+                  <div class="travel-expense-row">
+                    <span class="travel-expense-icon">$</span>
+                    <div><strong>Meals</strong><small>Receipt reviewed</small></div>
+                    <b>Approved</b>
+                  </div>
+                  <div class="travel-expense-row">
+                    <span class="travel-expense-icon">M</span>
+                    <div><strong>Mileage</strong><small>Trip distance logged</small></div>
+                    <b>Ready</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="tag">Mobile web app</p>
+              <h3>Travel Reimbursements</h3>
+              <p>Receipt OCR, trip-separated records, mileage, review controls, and report exports in one focused workflow.</p>
             </div>
           </article>
         </div>
@@ -720,6 +763,7 @@
         </div>
         <div class="modal-footer">
           <p id="modal-count"></p>
+          <a class="modal-page-link" id="modal-page-link" href="#/solutions">Open page</a>
           <div class="modal-dots" id="modal-dots" aria-label="Preview slides"></div>
         </div>
       </section>
@@ -730,6 +774,6 @@
       <img id="lightbox-image" alt="" />
     </div>
 
-    <script src="./script.js?v=fullscreen-2"></script>
+    <script src="./script.js?v=lane-logo-1"></script>
   </body>
 </html>

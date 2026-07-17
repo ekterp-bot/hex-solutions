@@ -471,7 +471,7 @@ h3 {
 
 .hex-lane-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -485,6 +485,9 @@ h3 {
   border-radius: 8px;
   color: inherit;
   text-decoration: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   background:
     linear-gradient(145deg, rgba(49, 216, 197, 0.08), rgba(242, 184, 75, 0.035)),
     rgba(255, 255, 255, 0.04);
@@ -526,6 +529,12 @@ h3 {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+@media (max-width: 1180px) {
+  .hex-lane-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .project-grid {
@@ -641,6 +650,186 @@ h3 {
   background:
     radial-gradient(circle at 25% 20%, rgba(242, 184, 75, 0.15), transparent 28%),
     linear-gradient(135deg, rgba(210, 0, 0, 0.28), rgba(242, 184, 75, 0.08));
+}
+
+.travel-shot {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(49, 216, 197, 0.22), transparent 32%),
+    linear-gradient(135deg, rgba(12, 39, 48, 0.9), rgba(242, 184, 75, 0.08));
+}
+
+.travel-app-frame {
+  width: min(100%, 25rem);
+  overflow: hidden;
+  border: 1px solid rgba(49, 216, 197, 0.32);
+  border-radius: 8px;
+  background: #0c151b;
+  box-shadow: 0 1.4rem 3rem rgba(0, 0, 0, 0.28);
+}
+
+.travel-app-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f4f7f8;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.travel-status {
+  padding: 0.25rem 0.45rem;
+  border-radius: 999px;
+  color: #08201c;
+  background: var(--cyan);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.travel-app-body {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.85rem;
+}
+
+.travel-trip-card {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.8rem;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(49, 216, 197, 0.14), rgba(255, 255, 255, 0.04));
+}
+
+.travel-trip-card span,
+.travel-modal-header span {
+  color: var(--cyan);
+  font-size: 0.57rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.travel-trip-card strong,
+.travel-modal-header h3 {
+  color: #f4f7f8;
+  font-size: 1rem;
+}
+
+.travel-trip-card small,
+.travel-modal-header p,
+.travel-expense-row small {
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.travel-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.travel-action-row span {
+  padding: 0.4rem 0.55rem;
+  border: 1px solid rgba(49, 216, 197, 0.24);
+  border-radius: 5px;
+  color: var(--cyan);
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.travel-expense-row {
+  display: grid;
+  grid-template-columns: 1.7rem minmax(0, 1fr) auto;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.travel-expense-icon {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  aspect-ratio: 1;
+  border-radius: 5px;
+  color: #071314;
+  background: var(--amber);
+  font-size: 0.7rem;
+  font-weight: 900;
+}
+
+.travel-expense-row div {
+  display: grid;
+  gap: 0.13rem;
+  min-width: 0;
+}
+
+.travel-expense-row strong {
+  color: #f4f7f8;
+  font-size: 0.7rem;
+}
+
+.travel-expense-row b {
+  color: var(--cyan);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.travel-modal-mockup {
+  display: grid;
+  gap: 1rem;
+  width: min(100%, 42rem);
+}
+
+.travel-modal-mockup .travel-app-frame {
+  width: 100%;
+}
+
+.travel-modal-mockup .travel-app-body {
+  gap: 0.9rem;
+  padding: clamp(1rem, 3vw, 1.35rem);
+}
+
+.travel-modal-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.25rem 0 0.4rem;
+}
+
+.travel-modal-header div {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.travel-modal-header h3,
+.travel-modal-header p {
+  margin: 0;
+}
+
+.travel-modal-header strong {
+  color: var(--amber);
+  font-size: 1.4rem;
+}
+
+.travel-feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.travel-feature-list span {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid rgba(242, 184, 75, 0.25);
+  border-radius: 5px;
+  color: var(--muted);
+  font-size: 0.7rem;
 }
 
 .phone-frame,
@@ -1945,6 +2134,28 @@ h3 {
   justify-content: space-between;
   gap: 1rem;
   padding: 0 3.25rem;
+}
+
+.modal-page-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.35rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(49, 216, 197, 0.28);
+  border-radius: 8px;
+  color: var(--cyan);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(49, 216, 197, 0.08);
+}
+
+.modal-page-link:hover,
+.modal-page-link:focus-visible {
+  border-color: rgba(49, 216, 197, 0.7);
+  outline: none;
 }
 
 .modal-footer p {

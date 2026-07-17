@@ -439,6 +439,8 @@ const projectData = {
     title: "Websites and storefronts",
     description:
       "Clickable, trustworthy local business pages that show the offer fast, make the business look legit, and give customers a clear next step.",
+    route: "#/websites",
+    routeLabel: "Open Websites page",
     slides: [
       {
         type: "image",
@@ -468,6 +470,8 @@ const projectData = {
     title: "Custom web apps",
     description:
       "Purpose-built tools for creators, teams, and operators: profiles, portals, dashboards, rate searches, forms, and workflows that match the real job.",
+    route: "#/solutions",
+    routeLabel: "Open Solutions page",
     slides: [
       {
         type: "image",
@@ -490,6 +494,8 @@ const projectData = {
     title: "Automation and integrations",
     description:
       "A sanitized dispatcher control panel based on a real spreadsheet workflow: one place to import new work, sync reports, update statuses, refresh stock views, and generate handoff lists.",
+    route: "#/automations",
+    routeLabel: "Open Automations page",
     slides: [
       {
         type: "image",
@@ -514,6 +520,46 @@ const projectData = {
             <span>Proof is building</span>
             <h3>Make the thing feel finished, usable, and ready to show people.</h3>
             <p>Good fits: AI-generated apps, Lovable/Bolt/Replit prototypes, rough landing pages, mobile layout fixes, and product UI cleanup.</p>
+          </div>`,
+      },
+    ],
+  },
+  "ai-rescue": {
+    tag: "Build rescue",
+    title: "AI builds rescued and shipped",
+    description:
+      "For projects that started in Lovable, Bolt, Replit, v0, Cursor, or GitHub and got stuck once the real app details showed up.",
+    route: "#/rescue",
+    routeLabel: "Open AI Rescue page",
+    slides: [
+      {
+        type: "html",
+        label: "Rescue plan",
+        html: `
+          <div class="modal-note">
+            <span>AI build rescue</span>
+            <h3>Bring the half-working prototype. Hex turns it into something usable.</h3>
+            <p>Good fits: authentication, databases, deployment, broken flows, missing backend work, API keys, admin screens, cleanup, and making an AI-generated app feel finished.</p>
+          </div>`,
+      },
+    ],
+  },
+  "logo-concepts": {
+    tag: "Brand direction",
+    title: "Logo concepts and AI design direction",
+    description:
+      "Fast visual direction for new projects: logo concepts, style prompts, brand notes, and cleaner AI-assisted design requests without getting stuck in generic results.",
+    route: "#/logos",
+    routeLabel: "Open Logos page",
+    slides: [
+      {
+        type: "html",
+        label: "Logo direction",
+        html: `
+          <div class="modal-note">
+            <span>Logo solutions</span>
+            <h3>Build quick logo concepts, then sharpen the best direction.</h3>
+            <p>Good fits: new business names, artist brands, app icons, social profile marks, clean wordmarks, style prompts, and visual feedback on what the AI generated.</p>
           </div>`,
       },
     ],
@@ -600,6 +646,65 @@ const projectData = {
       },
     ],
   },
+  "travel-reimbursements": {
+    tag: "Mobile web app",
+    title: "Travel Reimbursements",
+    description:
+      "A mobile-friendly reimbursement workflow for creating separate trips, capturing receipt photos, extracting details with AI, reviewing expenses, and exporting approved reports without mixing trip records.",
+    route: "#/solutions",
+    routeLabel: "Open Solutions page",
+    slides: [
+      {
+        type: "html",
+        label: "Sanitized product preview",
+        html: `
+          <div class="travel-modal-mockup">
+            <div class="travel-app-frame">
+              <div class="travel-app-topbar">
+                <span>Travel Reimbursements</span>
+                <span class="travel-status">AI scan ready</span>
+              </div>
+              <div class="travel-app-body">
+                <div class="travel-modal-header">
+                  <div>
+                    <span>ACTIVE TRIP</span>
+                    <h3>Client visit</h3>
+                    <p>May 12 - May 15 · Business travel</p>
+                  </div>
+                  <strong>$482.60</strong>
+                </div>
+                <div class="travel-action-row">
+                  <span>+ Add receipt</span>
+                  <span>Log mileage</span>
+                  <span>Export report</span>
+                </div>
+                <div class="travel-expense-row">
+                  <span class="travel-expense-icon">$</span>
+                  <div><strong>Meals</strong><small>Vendor and line items reviewed</small></div>
+                  <b>Approved</b>
+                </div>
+                <div class="travel-expense-row">
+                  <span class="travel-expense-icon">R</span>
+                  <div><strong>Hotel</strong><small>Receipt details extracted</small></div>
+                  <b>Needs review</b>
+                </div>
+                <div class="travel-expense-row">
+                  <span class="travel-expense-icon">M</span>
+                  <div><strong>Mileage</strong><small>Distance and rate captured</small></div>
+                  <b>Ready</b>
+                </div>
+              </div>
+            </div>
+            <div class="travel-feature-list">
+              <span>OCR receipt extraction</span>
+              <span>Duplicate warnings</span>
+              <span>Excel + PDF exports</span>
+              <span>Trip-separated records</span>
+            </div>
+          </div>`,
+      },
+    ],
+  },
 };
 
 const modal = document.querySelector("#project-modal");
@@ -609,6 +714,7 @@ const modalDescription = document.querySelector("#modal-description");
 const modalSlide = document.querySelector("#modal-slide");
 const modalCount = document.querySelector("#modal-count");
 const modalDots = document.querySelector("#modal-dots");
+const modalPageLink = document.querySelector("#modal-page-link");
 const prevButton = document.querySelector(".modal-prev");
 const nextButton = document.querySelector(".modal-next");
 const lightbox = document.querySelector("#image-lightbox");
@@ -624,6 +730,9 @@ const renderModal = () => {
   modalTitle.textContent = project.title;
   modalTag.textContent = project.tag;
   modalDescription.textContent = project.description;
+  modalPageLink.hidden = !project.route;
+  modalPageLink.href = project.route || "#/solutions";
+  modalPageLink.textContent = project.routeLabel || "Open page";
   modalSlide.innerHTML =
     slide.type === "image"
       ? `<button class="modal-image-button" type="button" data-fullscreen-image="${slide.src}" data-fullscreen-alt="${slide.alt}" aria-label="Open full screen preview"><img class="modal-image ${slide.className || ""}" src="${slide.src}" alt="${slide.alt}"></button>`
@@ -749,6 +858,11 @@ document.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopPropagation();
     closeLightbox();
+    return;
+  }
+
+  if (event.target.closest("#modal-page-link")) {
+    closeModal();
     return;
   }
 
