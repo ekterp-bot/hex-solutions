@@ -657,7 +657,7 @@ const projectData = {
     tag: "Mobile web app",
     title: "Travel Reimbursements",
     description:
-      "A mobile-friendly reimbursement workflow for creating separate trips, capturing receipt photos, extracting details with AI, reviewing expenses, and exporting approved reports without mixing trip records. Screenshots use demo data.",
+      "A mobile-friendly reimbursement workflow for creating separate trips, capturing receipt photos, extracting details with AI, reviewing expenses, and exporting approved reports without mixing trip records. Preview screenshots show the working interface.",
     route: "https://travel-expense-reimbursement-mvp.vercel.app",
     routeLabel: "Try the live app",
     slides: [
@@ -762,21 +762,21 @@ projectData["travel-reimbursements"].slides = [
     type: "image",
     src: "./assets/travel-trips.png",
     className: "modal-browser app-screenshot",
-    alt: "Travel Reimbursements trip list with demo trip totals and export actions",
+    alt: "Travel Reimbursements trip list with trip totals and export actions",
     label: "Trip list and report actions",
   },
   {
     type: "image",
     src: "./assets/travel-trip-detail.png",
     className: "modal-browser app-screenshot",
-    alt: "Travel Reimbursements trip detail page with demo expenses and receipt actions",
+    alt: "Travel Reimbursements trip detail page with expenses and receipt actions",
     label: "Trip detail and expense review",
   },
   {
     type: "image",
     src: "./assets/travel-receipt-form.png",
     className: "modal-browser app-screenshot",
-    alt: "Travel Reimbursements receipt form with demo fields and approval action",
+    alt: "Travel Reimbursements receipt form with receipt fields and approval action",
     label: "Receipt capture and approval form",
   },
 ];

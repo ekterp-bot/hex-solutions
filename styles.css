@@ -2186,6 +2186,14 @@ h3 {
   text-wrap: balance;
 }
 
+.project-modal[data-project="travel-reimbursements"] .modal-copy h2 {
+  max-width: none;
+  font-size: clamp(1.35rem, 2.5vw, 2.25rem);
+  overflow-wrap: normal;
+  text-wrap: nowrap;
+  white-space: nowrap;
+}
+
 .modal-copy p,
 .modal-stage,
 .modal-slide,
