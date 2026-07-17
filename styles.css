@@ -1611,6 +1611,59 @@ h3 {
   backdrop-filter: blur(10px);
 }
 
+.automation-case-study {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(20rem, 1.12fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.automation-case-copy {
+  max-width: 42rem;
+}
+
+.automation-case-copy h3 {
+  max-width: 34rem;
+  margin: 0.65rem 0 0;
+  font-size: clamp(1.55rem, 3vw, 2.45rem);
+}
+
+.automation-case-copy > p {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.automation-case-features {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1.35rem;
+}
+
+.automation-case-features div {
+  display: grid;
+  gap: 0.18rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(49, 216, 197, 0.5);
+}
+
+.automation-case-features strong {
+  color: var(--text);
+}
+
+.automation-case-features span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.automation-travel-preview img {
+  aspect-ratio: 1.8;
+  object-fit: contain;
+  background: #edf3f6;
+}
+
 .automation-request-panel {
   display: grid;
   gap: 0.9rem;
@@ -2476,6 +2529,7 @@ h3 {
   .logo-design-layout,
   .website-examples,
   .automation-layout,
+  .automation-case-study,
   .automation-proof-grid,
   .rescue-panel,
   .process-track {
