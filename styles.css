@@ -1517,6 +1517,109 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
+.saas-section {
+  border-top: 1px solid var(--line);
+}
+
+.saas-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(20rem, 1.12fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.saas-copy {
+  max-width: 42rem;
+}
+
+.saas-copy h3 {
+  max-width: 34rem;
+  margin: 0.65rem 0 0;
+  font-size: clamp(1.65rem, 3.2vw, 2.7rem);
+}
+
+.saas-copy > p:not(.tag) {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.7;
+}
+
+.saas-points {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1.35rem;
+}
+
+.saas-points div {
+  display: grid;
+  gap: 0.18rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid rgba(49, 216, 197, 0.5);
+}
+
+.saas-points strong {
+  color: var(--text);
+}
+
+.saas-points span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.saas-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+}
+
+.saas-preview {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(49, 216, 197, 0.28);
+  border-radius: 8px;
+  background: #f7fafb;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  cursor: zoom-in;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.saas-preview:hover,
+.saas-preview:focus-visible {
+  border-color: rgba(49, 216, 197, 0.68);
+  box-shadow: 0 30px 90px rgba(49, 216, 197, 0.14);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.saas-preview img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.38;
+  object-fit: contain;
+}
+
+.saas-preview span {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(49, 216, 197, 0.38);
+  border-radius: 999px;
+  background: rgba(5, 16, 18, 0.84);
+  color: var(--cyan);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  backdrop-filter: blur(10px);
+}
+
 .automation-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(20rem, 1.12fr);
@@ -2530,6 +2633,7 @@ h3 {
   .website-examples,
   .automation-layout,
   .automation-case-study,
+  .saas-feature,
   .automation-proof-grid,
   .rescue-panel,
   .process-track {

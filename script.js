@@ -9,7 +9,7 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 
 const pageViews = document.querySelectorAll(".page-view[data-page]");
 const routeLinks = document.querySelectorAll("[data-route-link]");
-const validRoutes = new Set(["home", "solutions", "services", "logos", "websites", "automations", "rescue", "process", "contact"]);
+const validRoutes = new Set(["home", "solutions", "services", "websites", "saas", "automations", "rescue", "process", "contact"]);
 
 const getRoute = () => {
   const rawRoute = window.location.hash.replace(/^#\/?/, "");
@@ -28,10 +28,8 @@ const setActivePage = () => {
   });
 
   document.body.dataset.currentPage = route;
-  document.title =
-    route === "home"
-      ? "Hex Solutions | Hex the Engineer"
-      : `${route.charAt(0).toUpperCase() + route.slice(1)} | Hex Solutions`;
+  const pageTitle = route === "saas" ? "SaaS" : route.charAt(0).toUpperCase() + route.slice(1);
+  document.title = route === "home" ? "Hex Solutions | Hex the Engineer" : `${pageTitle} | Hex Solutions`;
 
   window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   updateHeader();
@@ -171,9 +169,6 @@ const intakeForm = document.querySelector("#intake-form");
 const formStatus = document.querySelector("#form-status");
 const inviteNote = document.querySelector(".invite-note");
 const handoffButtons = document.querySelectorAll("[data-handoff]");
-const logoAiForm = document.querySelector("#logo-ai-form");
-const logoAiStatus = document.querySelector("#logo-ai-status");
-const logoAiResult = document.querySelector("#logo-ai-result");
 const websiteRequestForm = document.querySelector("#website-request-form");
 const websiteRequestStatus = document.querySelector("#website-request-status");
 const automationRequestForm = document.querySelector("#automation-request-form");
@@ -282,61 +277,6 @@ intakeForm?.addEventListener("submit", async (event) => {
           : error.message,
       "error",
     );
-  } finally {
-    submitButton.disabled = false;
-  }
-});
-
-logoAiForm?.addEventListener("submit", async (event) => {
-  event.preventDefault();
-  const submitButton = logoAiForm.querySelector('button[type="submit"]');
-  const payload = Object.fromEntries(new FormData(logoAiForm).entries());
-  const requestPayload = {
-    name: payload.brand,
-    email: "hexsolutions.dev@gmail.com",
-    projectType: "Logo concept or brand direction",
-    links: `Style: ${payload.style || "Not specified"}\nMust avoid: ${payload.avoid || "Not specified"}`,
-    summary: `Logo / AI concept request for: ${payload.brand}\n\nBrief:\n${payload.brief}`,
-    timeline: "Logo concept request",
-    budget: "To discuss",
-  };
-
-  submitButton.disabled = true;
-  logoAiResult.hidden = true;
-  logoAiStatus.textContent = "Sending logo request to Hex Solutions...";
-  logoAiStatus.dataset.state = "";
-
-  try {
-    const response = await fetch("/api/intake", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestPayload),
-    });
-    const result = await response.json().catch(() => ({}));
-
-    if (!response.ok) {
-      throw new Error(result.message || "The logo request could not send yet.");
-    }
-
-    logoAiForm.reset();
-    logoAiResult.hidden = false;
-    logoAiResult.innerHTML = `
-      <div class="logo-ai-score">Request sent</div>
-      <h4>Hex will review the logo brief.</h4>
-      <p>I will use AI to shape the concept, rate the direction, and reply with the next best prompt or visual direction.</p>
-    `;
-    logoAiStatus.textContent = "Logo request sent. Hex Solutions will follow up by email.";
-    logoAiStatus.dataset.state = "success";
-  } catch (error) {
-    const localPreview = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost";
-    logoAiStatus.textContent = localPreview
-      ? "Local preview cannot send email yet. Once deployed with Resend configured, this request will email Hex Solutions."
-      : error.message.includes("configured")
-        ? "Email sending is not connected yet. Add RESEND_API_KEY in Vercel to make logo requests live."
-        : error.message;
-    logoAiStatus.dataset.state = "error";
   } finally {
     submitButton.disabled = false;
   }
@@ -547,26 +487,6 @@ const projectData = {
             <span>AI build rescue</span>
             <h3>Bring the half-working prototype. Hex turns it into something usable.</h3>
             <p>Good fits: authentication, databases, deployment, broken flows, missing backend work, API keys, admin screens, cleanup, and making an AI-generated app feel finished.</p>
-          </div>`,
-      },
-    ],
-  },
-  "logo-concepts": {
-    tag: "Brand direction",
-    title: "Logo concepts and AI design direction",
-    description:
-      "Fast visual direction for new projects: logo concepts, style prompts, brand notes, and cleaner AI-assisted design requests without getting stuck in generic results.",
-    route: "#/logos",
-    routeLabel: "Open Logos page",
-    slides: [
-      {
-        type: "html",
-        label: "Logo direction",
-        html: `
-          <div class="modal-note">
-            <span>Logo solutions</span>
-            <h3>Build quick logo concepts, then sharpen the best direction.</h3>
-            <p>Good fits: new business names, artist brands, app icons, social profile marks, clean wordmarks, style prompts, and visual feedback on what the AI generated.</p>
           </div>`,
       },
     ],
