@@ -40,6 +40,13 @@ const setActivePage = () => {
 setActivePage();
 window.addEventListener("hashchange", setActivePage);
 
+document.querySelectorAll(".project-shot").forEach((shot) => {
+  const source = shot.querySelector("img");
+  if (source?.src) {
+    shot.style.setProperty("--preview-image", `url("${source.src}")`);
+  }
+});
+
 document.querySelectorAll(".project-grid").forEach((rail) => {
   let isDragging = false;
   let dragStarted = false;
